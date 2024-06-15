@@ -1,17 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 * {
-    font-family: Montserrat, sans-serif;
-    border: 2px solid red;
+    font-family: JetBrains Mono, monospace;
+    /* font-family: Montserrat, sans-serif; */
+    /* border: 2px solid red; */
+}
+
+body {
+    background-color:rgb(26, 83, 92);
 }
 
 .container {
     display: flex;
-    justify-content: center;
-    align-content: center;
+
     flex-direction: column;
-    background-color:mistyrose;
+    background-color:rgb(78, 205, 196);
     width: 300px;
-    height: 5%;
+    height: 500px;
     margin: auto;
     padding: 50px;
     border-radius: 15px;
@@ -24,18 +30,63 @@
 }
 
 .calc-display {
-
-
+    display: flex;
+    min-height: 30px;
+    align-items:last baseline;
+    justify-content: flex-end;
+    background-color: rgb(60, 146, 140);
 
 }
 
 .num-buttons {
     display: flex;
     flex-direction: row;
-    
+    margin-bottom: -30px;
+    gap: 2px;
+
 }
 
-.operation-buttons {
+.num-button {
     display: flex;
-    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    background-color: rgb(178, 173, 223);
+    border-radius: 10px;
+}
+
+
+
+.op-button {
+    display: flex;
+    flex-grow: 1;
+    height: 50px;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(154, 148, 207);
+    border-radius: 10px;
+
+}
+
+.op-button:hover {
+    background-color: rgb(178, 173, 223);
+}
+
+.num-button:hover {
+    background-color: rgb(154, 148, 207);
+}
+
+em {
+
+}
+
+.model {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 200px;
+    align-items: last baseline;
+    font-weight: lighter;
 }

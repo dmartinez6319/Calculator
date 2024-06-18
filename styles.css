@@ -32,10 +32,12 @@ body {
 .calc-display {
     display: flex;
     min-height: 30px;
+    max-height: 30px;
     align-items:last baseline;
     justify-content: flex-end;
     background-color: rgb(60, 146, 140);
     border-radius: 5px;
+    
 
 }
 
@@ -81,10 +83,6 @@ body {
 
 .num-button:hover {
     background-color: rgb(154, 148, 207);
-}
-
-em {
-
 }
 
 .model {

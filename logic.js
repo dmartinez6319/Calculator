@@ -1,3 +1,6 @@
+let operation = false;
+let initialNum = 0;
+
 function addNum() {
 
 }
@@ -22,12 +25,13 @@ function decimalNum() {
 
 const displayBox = document.getElementById("display");
 function displayNum(num) {
-
     displayBox.innerHTML += num
 }
 
 function clearOut() {
     displayBox.innerHTML = "";
+    operating = false;
+    initialNum = 0;
 }
 
 const numButtons = document.querySelectorAll(".num-button");
@@ -39,6 +43,17 @@ numButtons.forEach(function(v){
 })
 
 function checkOperation(op) {
+
+    if (operation === op) {
+        return;
+    }
+    if (op !== "." && op !== "=" && typeof(operation) !== "boolean") {
+        let x = displayBox.innerHTML.slice(0,displayBox.innerHTML.length-3);
+        displayBox.innerHTML = x;
+    }
+
+    // initialNum = Number(displayBox.innerHTML);
+    operation = op;
     switch (op) {
         case "+":
             displayNum(" + ");
@@ -56,10 +71,10 @@ function checkOperation(op) {
             clearOut();
             break;
         case "=":
-            displayNum(" = ");
+
             break;
         case ".":
-            displayNum(". ");
+            displayNum(".");
             break;
     }
 }

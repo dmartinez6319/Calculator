@@ -9,6 +9,7 @@
 
 body {
     background-color:rgb(26, 83, 92);
+    
 }
 
 .container {
@@ -21,7 +22,7 @@ body {
     margin: auto;
     padding: 50px;
     border-radius: 15px;
-
+    outline: 5px solid black;
 }
 
 .functional-container {

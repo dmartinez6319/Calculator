@@ -1,3 +1,18 @@
+/*
+      _______      _________      _____       ______     _
+     / _____ \    |____ ____|    / ___ \     | ____ \   | |
+    / /     \_\       | |       / /   \ \    | |   \ \  | |
+    | |               | |      / /     \ \   | |   | |  | |
+    \ \______         | |      | |     | |   | |___/ /  | |
+     \______ \        | |      | |     | |   |  ____/   | |
+            \ \       | |      | |     | |   | |        | |
+     _      | |       | |      \ \     / /   | |        |_|
+    \ \_____/ /       | |       \ \___/ /    | |         _
+     \_______/        |_|        \_____/     |_|        |_|
+
+     this code suckss!!
+*/
+
 let operation = false;
 let decimal = false
 let initialNum = 0;
@@ -61,6 +76,8 @@ numButtons.forEach(function(v){
 function doOperation(){
     let result;
     console.log(operation);
+    console.log("The operation done was " + initialNum + " " + operation + " " + modifyNum);
+
     switch (operation) {
         case "+":
             result = addNum();
@@ -77,6 +94,7 @@ function doOperation(){
     }
     
     displayBox.innerHTML = initialNum;
+    
     operation = false;
     modifiyPart = false;
     if (initialNum % 1 !== 0){
@@ -113,15 +131,28 @@ function setModifyNumber(){
 
 function checkOperation(op) {
 
+    // Do nothing if operation is same
     if (operation === op) {
         return;
     }
 
+    if (operation !== false && op !== "." && op !== "=") {
+        console.log("modified PART CHANGED")
+        modifiyPart = true;
+    }
+    // Replace operation if modifyPart is false
     console.log("Operation is: "+ typeof(operation))
     if (op !== "." && op !== "=" && typeof(operation) !== "boolean") {
-        console.log("i delted")
-        let x = displayBox.innerHTML.slice(0,displayBox.innerHTML.length-3);
-        displayBox.innerHTML = x;
+        if (modifiyPart){
+            console.log("This is the ininital num: " + initialNum);
+            setModifyNumber(); 
+            doOperation(operation);
+        } else {
+            console.log("i delted")
+            let x = displayBox.innerHTML.slice(0,displayBox.innerHTML.length-3);
+            displayBox.innerHTML = x;
+        }
+
     }
 
     setInitalNumber(op);

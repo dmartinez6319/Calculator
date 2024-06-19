@@ -122,7 +122,9 @@ function setInitalNumber(op){
 
 function setModifyNumber(){
     if (initalPart){
+        console.log(sliced + " sliced")
         modifyNum = Number(displayBox.innerHTML.slice(sliced+3));
+        console.log("Display text: "+displayBox.innerHTML.slice(sliced+3));
         console.log("Modified number is: " + modifyNum);
         modifiyPart = true;
     }
@@ -156,6 +158,8 @@ function checkOperation(op) {
     setInitalNumber(op);
     if (op !== "=" && op !== "."){
         console.log("Changed operation: " + op);
+        sliced = displayBox.innerHTML.length;
+        console.log(sliced + " CAHNGE")
         operation = op;
     }
     if (initalPart){

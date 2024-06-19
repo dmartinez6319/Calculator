@@ -20,6 +20,7 @@ let modifyNum = 0;
 let initalPart = false;
 let modifiyPart = false;
 let sliced;
+let startModifying = false;
 
 function addNum() {
     return initialNum += modifyNum;
@@ -57,6 +58,7 @@ function clearOut() {
     modifyNum = 0;
     initalPart = false;
     modifiyPart = false;
+    startModifying = false;
 
 }
 
@@ -69,6 +71,9 @@ numButtons.forEach(function(v){
         }
         if (Number(displayBox.innerHTML) === 0 && !decimal) {
             displayBox.innerHTML = "";
+        }
+        if (operation !== "=" && operation !== "." && initialNum) {
+            startModifying = true;
         }
         displayNum(num);
     })
@@ -98,6 +103,7 @@ function doOperation(){
     
     operation = false;
     modifiyPart = false;
+    startModifying = false;
 
     if (initialNum % 1 !== 0){
         decimal = false;
@@ -139,18 +145,21 @@ function checkOperation(op) {
     if (operation === op) {
         return;
     }
-
-    if (operation !== false && op !== "." && op !== "=") {
-        console.log("modified PART CHANGED")
+    // change modifyPart to true to show we are working in the latter half of operation
+    if (operation !== false && op !== "." && op !== "=" && startModifying ) {
+        console.log("modified PART CHANGED");
         modifiyPart = true;
+    } else {
+        modifiyPart = false;
     }
-    // Replace operation if modifyPart is false
+    // Replace operation if modifyPart is false or doOperation to start new operation
     console.log("Operation is: "+ typeof(operation))
     if (op !== "." && op !== "=" && typeof(operation) !== "boolean") {
         if (modifiyPart){
             setModifyNumber(); 
             doOperation(operation);
         } else {
+            // For this to work I need to know that there arent any numbers right of operation so modifyPart = false
             let x = displayBox.innerHTML.slice(0,displayBox.innerHTML.length-3);
             displayBox.innerHTML = x;
         }

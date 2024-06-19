@@ -100,7 +100,6 @@ function doOperation(){
     if (initialNum % 1 !== 0){
         decimal = false;
     }
-    console.log("EFWSEFS" + initialNum)
     if (initialNum === false){
         console.log("hello")
         displayBox.innerHTML = "ERR";
@@ -144,19 +143,18 @@ function checkOperation(op) {
     console.log("Operation is: "+ typeof(operation))
     if (op !== "." && op !== "=" && typeof(operation) !== "boolean") {
         if (modifiyPart){
-            console.log("This is the ininital num: " + initialNum);
             setModifyNumber(); 
             doOperation(operation);
         } else {
-            console.log("i delted")
             let x = displayBox.innerHTML.slice(0,displayBox.innerHTML.length-3);
             displayBox.innerHTML = x;
         }
 
     }
 
+
     setInitalNumber(op);
-    if (op !== "="){
+    if (op !== "=" && op !== "."){
         console.log("Changed operation: " + op);
         operation = op;
     }
@@ -187,8 +185,10 @@ function checkOperation(op) {
             if (decimal) {
                 return;
             }
+            if (!initalPart) {
+                operation = false;
+            }
             decimal = true;
-            operation = false;
             displayNum(".");
             break;
     }

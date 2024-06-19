@@ -20,8 +20,9 @@ function multNum() {
 
 function divNum() {
     if (modifyNum === 0) {
-        displayBox.innerHTML = "ERR";
-        return false
+        console.log("returned false")
+        initialNum = false;
+        return initialNum;
     }
     
     return initialNum /= modifyNum
@@ -81,17 +82,23 @@ function doOperation(){
     if (initialNum % 1 !== 0){
         decimal = false;
     }
+    console.log("EFWSEFS" + initialNum)
+    if (initialNum === false){
+        console.log("hello")
+        displayBox.innerHTML = "ERR";
+    }
     console.log("Result set to: " + initialNum);
     console.log("Operation set to: " + typeof(operation));
 }
 
 function setInitalNumber(op){
-    if ((!decimal || op !== "=") && !initalPart) {
+    if ((op !== "." && op !== "=") && !initalPart) {
+        console.log("before opertion number: " + displayBox.innerHTML)
         initalPart = true;
         initialNum = Number(displayBox.innerHTML);
         operation = op;
         sliced = displayBox.innerHTML.length;
-        console.log("Initial Number set: " + initialNum);
+        console.log("Initial Number set: " + initialNum + " inside text: " + displayBox.innerHTML);
         
     }
 }

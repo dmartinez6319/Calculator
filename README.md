@@ -1,4 +1,4 @@
 # Calculator
-4 function calculator
-SCPT DM84-C Series
-Missing delete and decimal buttons
+very basic 4 function calculator
+SCPT DM25-C Series
+

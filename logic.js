@@ -57,6 +57,7 @@ function clearOut() {
     modifyNum = 0;
     initalPart = false;
     modifiyPart = false;
+
 }
 
 const numButtons = document.querySelectorAll(".num-button");
@@ -97,6 +98,7 @@ function doOperation(){
     
     operation = false;
     modifiyPart = false;
+
     if (initialNum % 1 !== 0){
         decimal = false;
     }
@@ -114,6 +116,7 @@ function setInitalNumber(op){
         initalPart = true;
         initialNum = Number(displayBox.innerHTML);
         operation = op;
+        decimal = false;
         sliced = displayBox.innerHTML.length;
         console.log("Initial Number set: " + initialNum + " inside text: " + displayBox.innerHTML);
         
@@ -156,15 +159,15 @@ function checkOperation(op) {
 
 
     setInitalNumber(op);
+
     if (op !== "=" && op !== "."){
         console.log("Changed operation: " + op);
+        decimal = false;
         sliced = displayBox.innerHTML.length;
         console.log(sliced + " CAHNGE")
         operation = op;
     }
-    if (initalPart){
-        decimal = false;
-    }
+    console.log("period " + decimal)
     switch (op) {
         case "+":
             displayNum(" + ");

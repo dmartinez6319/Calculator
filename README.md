@@ -1,4 +1,5 @@
 # Calculator
-very basic 4 function calculator
-SCPT DM25-C Series
+Odin Project Series
+Basic 4 function calculator
+Link: https://dmartinez6319.github.io/Calculator/
 
